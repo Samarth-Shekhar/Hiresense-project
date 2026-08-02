@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 const cookieOptions = {
   httpOnly: true,
-  sameSite: 'lax',
+  sameSite: isProduction ? 'none' : 'lax',
   secure: isProduction,
   maxAge:
     Number(process.env.COOKIE_EXPIRES_IN_DAYS || 7) * 24 * 60 * 60 * 1000,

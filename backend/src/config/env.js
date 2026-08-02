@@ -1,4 +1,4 @@
-const requiredVariables = ['MONGODB_URI', 'JWT_SECRET'];
+const requiredVariables = ['MONGODB_URI', 'JWT_SECRET', 'CLIENT_URL'];
 
 const validateEnvironment = () => {
   const missingVariables = requiredVariables.filter(
