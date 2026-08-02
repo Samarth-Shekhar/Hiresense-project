@@ -1,11 +1,10 @@
 services:
   - type: web
-    name: task-management-api
+    name: task-management-app
     runtime: node
     plan: free
-    rootDir: backend
-    buildCommand: npm ci
-    startCommand: npm start
+    buildCommand: npm ci --omit=dev --prefix backend && npm ci --include=dev --prefix frontend && npm run build --prefix frontend
+    startCommand: npm start --prefix backend
     healthCheckPath: /api/health
     autoDeployTrigger: commit
     envVars:
@@ -19,5 +18,3 @@ services:
         value: 7d
       - key: COOKIE_EXPIRES_IN_DAYS
         value: 7
-      - key: CLIENT_URL
-        sync: false
