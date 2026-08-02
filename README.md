@@ -1,5 +1,7 @@
 # Task Management System
 
+## Project overview
+
 A small full-stack task manager built as a weekend assignment. Users can create an account, manage their own tasks, track dashboard totals, and search or filter their workload.
 
 ## Features
@@ -14,6 +16,12 @@ A small full-stack task manager built as a weekend assignment. Users can create 
 - Responsive card and table layouts
 - Persistent light and dark themes
 - Central API errors and request validation
+
+## Screenshots
+
+| Login | Registration |
+| --- | --- |
+| ![Taskboard login screen](docs/screenshots/login.png) | ![Taskboard registration screen](docs/screenshots/register.png) |
 
 ## Stack
 
@@ -45,13 +53,48 @@ frontend/
     utils/        Display constants and formatting
 ```
 
+## Database schema
+
+### User
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `name` | String | Required, maximum 60 characters |
+| `email` | String | Required, unique and normalized |
+| `password` | String | Required, bcrypt hash excluded from normal queries |
+| `createdAt`, `updatedAt` | Date | Managed by Mongoose timestamps |
+
+### Task
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `user` | ObjectId | Required reference to the task owner |
+| `title` | String | Required, maximum 120 characters |
+| `description` | String | Optional, maximum 1,000 characters |
+| `priority` | String | `low`, `medium`, or `high` |
+| `status` | String | `pending`, `in-progress`, or `completed` |
+| `dueDate` | Date | Required |
+| `createdAt`, `updatedAt` | Date | Managed by Mongoose timestamps |
+
 ## Requirements
 
 - Node.js 22.12 or newer
 - npm
 - MongoDB running locally or a MongoDB Atlas connection string
 
-## Local setup
+## Environment variables
+
+| Variable | Application | Purpose |
+| --- | --- | --- |
+| `MONGODB_URI` | Backend | MongoDB connection string |
+| `JWT_SECRET` | Backend | Secret used to sign authentication tokens |
+| `JWT_EXPIRES_IN` | Backend | Token lifetime, such as `7d` |
+| `COOKIE_EXPIRES_IN_DAYS` | Backend | Authentication cookie lifetime |
+| `CLIENT_URL` | Backend | Allowed frontend origin for CORS |
+| `NODE_ENV` | Backend | Runtime environment |
+| `VITE_API_URL` | Frontend | Base URL for API requests |
+
+## Setup instructions
 
 ### 1. Backend
 
@@ -103,7 +146,7 @@ npm run dev
 
 Open `http://localhost:5173`.
 
-## API overview
+## API documentation
 
 All task routes require the JWT cookie created during registration or login.
 
@@ -118,8 +161,8 @@ All task routes require the JWT cookie created during registration or login.
 | GET | `/api/tasks` | List tasks |
 | GET | `/api/tasks/stats` | Get dashboard totals |
 | GET | `/api/tasks/:taskId` | Get one task |
-| PATCH | `/api/tasks/:taskId` | Update a task |
-| PATCH | `/api/tasks/:taskId/complete` | Mark a task complete |
+| PUT | `/api/tasks/:taskId` | Update a task |
+| PATCH | `/api/tasks/:taskId/status` | Update a task status |
 | DELETE | `/api/tasks/:taskId` | Delete a task |
 
 The list endpoint accepts `search`, `priority`, `status`, `dueDate`, `sort`, `page`, and `limit`. See the included Postman collection for examples.
