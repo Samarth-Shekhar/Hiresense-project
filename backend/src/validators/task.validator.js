@@ -125,3 +125,12 @@ export const updateTaskValidator = [
   statusValidator(),
   dueDateValidator(true),
 ];
+
+export const updateTaskStatusValidator = [
+  body('status')
+    .notEmpty()
+    .withMessage('Status is required')
+    .bail()
+    .isIn(TASK_STATUSES)
+    .withMessage(`Status must be ${TASK_STATUSES.join(', ')}`),
+];

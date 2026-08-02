@@ -46,11 +46,15 @@ export const deleteTask = async (req, res) => {
   res.status(200).json({ message: 'Task deleted successfully' });
 };
 
-export const completeTask = async (req, res) => {
-  const task = await taskService.completeTask(req.params.taskId, req.user.id);
+export const updateTaskStatus = async (req, res) => {
+  const task = await taskService.updateTask(
+    req.params.taskId,
+    req.user.id,
+    { status: req.body.status },
+  );
 
   res.status(200).json({
-    message: 'Task marked as completed',
+    message: 'Task status updated successfully',
     task,
   });
 };

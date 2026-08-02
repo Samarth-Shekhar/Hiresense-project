@@ -127,7 +127,7 @@
         {
           "name": "Update Task",
           "request": {
-            "method": "PATCH",
+            "method": "PUT",
             "header": [
               { "key": "Content-Type", "value": "application/json" }
             ],
@@ -144,7 +144,15 @@
           "name": "Mark Task Complete",
           "request": {
             "method": "PATCH",
-            "url": "{{baseUrl}}/tasks/{{taskId}}/complete"
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"completed\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{baseUrl}}/tasks/{{taskId}}/status"
           },
           "response": []
         },

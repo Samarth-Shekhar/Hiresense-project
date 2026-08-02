@@ -139,10 +139,3 @@ export const deleteTask = async (taskId, userId) => {
 
   await task.deleteOne();
 };
-
-export const completeTask = async (taskId, userId) => {
-  const task = await findUserTask(taskId, userId);
-
-  task.status = 'completed';
-  return task.save();
-};

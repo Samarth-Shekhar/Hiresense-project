@@ -1,13 +1,13 @@
 import { Router } from 'express';
 
 import {
-  completeTask,
   createTask,
   deleteTask,
   getTask,
   getTaskStats,
   getTasks,
   updateTask,
+  updateTaskStatus,
 } from '../controllers/task.controller.js';
 import { protect } from '../middleware/auth.middleware.js';
 import validate from '../middleware/validate.middleware.js';
@@ -15,6 +15,7 @@ import {
   createTaskValidator,
   listTaskValidator,
   taskIdValidator,
+  updateTaskStatusValidator,
   updateTaskValidator,
 } from '../validators/task.validator.js';
 
@@ -29,16 +30,17 @@ router
 router.get('/stats', getTaskStats);
 
 router.patch(
-  '/:taskId/complete',
+  '/:taskId/status',
   taskIdValidator,
+  updateTaskStatusValidator,
   validate,
-  completeTask,
+  updateTaskStatus,
 );
 
 router
   .route('/:taskId')
   .get(taskIdValidator, validate, getTask)
-  .patch(taskIdValidator, updateTaskValidator, validate, updateTask)
+  .put(taskIdValidator, updateTaskValidator, validate, updateTask)
   .delete(taskIdValidator, validate, deleteTask);
 
 export default router;

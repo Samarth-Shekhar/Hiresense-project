@@ -37,7 +37,7 @@ const EditTask = () => {
     setError('');
 
     try {
-      await api.patch(`/tasks/${taskId}`, taskData);
+      await api.put(`/tasks/${taskId}`, taskData);
       toast.success('Task updated successfully');
       navigate('/tasks');
     } catch (requestError) {

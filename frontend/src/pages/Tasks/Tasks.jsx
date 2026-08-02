@@ -100,7 +100,7 @@ const Tasks = () => {
     setBusyTaskId(taskId);
 
     try {
-      await api.patch(`/tasks/${taskId}/complete`);
+      await api.patch(`/tasks/${taskId}/status`, { status: 'completed' });
       toast.success('Task marked as completed');
       await loadTasks();
     } catch (requestError) {
