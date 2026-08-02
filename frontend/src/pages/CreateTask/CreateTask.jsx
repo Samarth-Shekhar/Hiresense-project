@@ -25,21 +25,21 @@ const CreateTask = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <Navbar />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:flex md:gap-8">
         <Sidebar />
         <main className="min-w-0 flex-1 py-8">
           <p className="text-sm font-medium text-blue-600">Tasks</p>
-          <h1 className="mt-1 text-2xl font-semibold text-slate-900">
+          <h1 className="mt-1 text-2xl font-semibold text-slate-900 dark:text-white">
             Create a task
           </h1>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
             Add the details you need to plan and prioritize the work.
           </p>
 
           {error && (
-            <p className="mt-6 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <p className="mt-6 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/50 dark:text-red-300">
               {error}
             </p>
           )}

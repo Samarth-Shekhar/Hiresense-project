@@ -139,7 +139,7 @@ const Tasks = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <Navbar />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:flex md:gap-8">
         <Sidebar />
@@ -147,10 +147,10 @@ const Tasks = () => {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-medium text-blue-600">Tasks</p>
-              <h1 className="mt-1 text-2xl font-semibold text-slate-900">
+              <h1 className="mt-1 text-2xl font-semibold text-slate-900 dark:text-white">
                 Your tasks
               </h1>
-              <p className="mt-2 text-slate-600">
+              <p className="mt-2 text-slate-600 dark:text-slate-400">
                 Review your workload and keep each task up to date.
               </p>
             </div>
@@ -174,7 +174,7 @@ const Tasks = () => {
           </section>
 
           {error && (
-            <div className="mt-6 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <div className="mt-6 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/50 dark:text-red-300">
               {error}{' '}
               <button type="button" onClick={loadTasks} className="font-semibold">
                 Try again
@@ -183,13 +183,13 @@ const Tasks = () => {
           )}
 
           {loading ? (
-            <p className="mt-8 text-sm text-slate-500">Loading tasks...</p>
+            <p className="mt-8 text-sm text-slate-500 dark:text-slate-400">Loading tasks...</p>
           ) : tasks.length === 0 ? (
-            <section className="mt-8 rounded-lg border border-dashed border-slate-300 bg-white px-6 py-12 text-center">
-              <h2 className="font-semibold text-slate-900">
+            <section className="mt-8 rounded-lg border border-dashed border-slate-300 bg-white px-6 py-12 text-center dark:border-slate-700 dark:bg-slate-900">
+              <h2 className="font-semibold text-slate-900 dark:text-white">
                 {hasActiveFilters ? 'No matching tasks' : 'No tasks yet'}
               </h2>
-              <p className="mt-2 text-sm text-slate-600">
+              <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
                 {hasActiveFilters
                   ? 'Try changing or clearing the current filters.'
                   : 'Create your first task to start organizing your work.'}

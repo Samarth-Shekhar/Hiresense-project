@@ -14,11 +14,11 @@ const initialStats = {
 };
 
 const StatCard = ({ icon: Icon, label, value, color }) => (
-  <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
+  <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
     <div className="flex items-start justify-between">
       <div>
-        <p className="text-sm font-medium text-slate-500">{label}</p>
-        <p className="mt-2 text-3xl font-semibold text-slate-900">{value}</p>
+        <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{label}</p>
+        <p className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">{value}</p>
       </div>
       <span className={`rounded-lg p-3 ${color}`}>
         <Icon className="h-5 w-5" aria-hidden="true" />
@@ -73,24 +73,24 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
       <Navbar />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:flex md:gap-8">
         <Sidebar />
         <main className="min-w-0 flex-1 py-8">
           <div>
             <p className="text-sm font-medium text-blue-600">Overview</p>
-            <h1 className="mt-1 text-2xl font-semibold text-slate-900">
+            <h1 className="mt-1 text-2xl font-semibold text-slate-900 dark:text-white">
               Welcome back, {user.name}
             </h1>
-            <p className="mt-2 text-slate-600">
+            <p className="mt-2 text-slate-600 dark:text-slate-400">
               Here is a summary of your current workload.
             </p>
           </div>
 
           {error && (
             <div
-              className="mt-6 flex items-center justify-between gap-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+              className="mt-6 flex items-center justify-between gap-4 rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-900 dark:bg-red-950/50 dark:text-red-300"
               role="alert"
             >
               <span>{error}</span>

@@ -14,7 +14,12 @@ createRoot(document.getElementById('root')).render(
       <BrowserRouter>
         <AuthProvider>
           <App />
-          <Toaster position="top-right" />
+          <Toaster
+            position="top-right"
+            toastOptions={{
+              className: 'dark:!bg-slate-800 dark:!text-slate-100',
+            }}
+          />
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>

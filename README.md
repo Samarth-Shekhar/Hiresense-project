@@ -12,6 +12,7 @@ A small full-stack task manager built as a weekend assignment. Users can create 
 - Priority, status, and due-date filters
 - Configurable sorting and server-side pagination
 - Responsive card and table layouts
+- Persistent light and dark themes
 - Central API errors and request validation
 
 ## Stack

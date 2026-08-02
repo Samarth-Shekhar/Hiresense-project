@@ -3,11 +3,12 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 
+import ThemeToggle from '../../components/ThemeToggle/ThemeToggle.jsx';
 import useAuth from '../../hooks/useAuth/useAuth.js';
 import { getErrorMessage } from '../../utils/helpers.js';
 
 const inputClassName =
-  'mt-1 w-full rounded-md border border-slate-300 px-3 py-2.5 text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100';
+  'mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-blue-950';
 
 const Register = () => {
   const { user, registerUser } = useAuth();
@@ -37,18 +38,21 @@ const Register = () => {
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12">
-      <section className="w-full max-w-md rounded-lg border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+    <main className="relative flex min-h-screen items-center justify-center bg-slate-50 px-4 py-12 dark:bg-slate-950">
+      <div className="absolute right-4 top-4">
+        <ThemeToggle />
+      </div>
+      <section className="w-full max-w-md rounded-lg border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
         <p className="text-sm font-semibold text-blue-600">Task Management</p>
-        <h1 className="mt-2 text-2xl font-semibold text-slate-900">
+        <h1 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-white">
           Create your account
         </h1>
-        <p className="mt-2 text-sm text-slate-600">
+        <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
           Start organizing your work in a few seconds.
         </p>
 
         {serverError && (
-          <p className="mt-5 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">
+          <p className="mt-5 rounded-md bg-red-50 px-3 py-2 text-sm text-red-700 dark:bg-red-950/50 dark:text-red-300">
             {serverError}
           </p>
         )}
@@ -59,7 +63,7 @@ const Register = () => {
           noValidate
         >
           <div>
-            <label className="text-sm font-medium text-slate-700" htmlFor="name">
+            <label className="text-sm font-medium text-slate-700 dark:text-slate-300" htmlFor="name">
               Name
             </label>
             <input
@@ -77,12 +81,12 @@ const Register = () => {
               })}
             />
             {errors.name && (
-              <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+              <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.name.message}</p>
             )}
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700" htmlFor="email">
+            <label className="text-sm font-medium text-slate-700 dark:text-slate-300" htmlFor="email">
               Email address
             </label>
             <input
@@ -100,12 +104,12 @@ const Register = () => {
               })}
             />
             {errors.email && (
-              <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+              <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.email.message}</p>
             )}
           </div>
 
           <div>
-            <label className="text-sm font-medium text-slate-700" htmlFor="password">
+            <label className="text-sm font-medium text-slate-700 dark:text-slate-300" htmlFor="password">
               Password
             </label>
             <input
@@ -127,7 +131,7 @@ const Register = () => {
               })}
             />
             {errors.password && (
-              <p className="mt-1 text-sm text-red-600">
+              <p className="mt-1 text-sm text-red-600 dark:text-red-400">
                 {errors.password.message}
               </p>
             )}
@@ -135,7 +139,7 @@ const Register = () => {
 
           <div>
             <label
-              className="text-sm font-medium text-slate-700"
+              className="text-sm font-medium text-slate-700 dark:text-slate-300"
               htmlFor="confirmPassword"
             >
               Confirm password
@@ -153,7 +157,7 @@ const Register = () => {
               })}
             />
             {errors.confirmPassword && (
-              <p className="mt-1 text-sm text-red-600">
+              <p className="mt-1 text-sm text-red-600 dark:text-red-400">
                 {errors.confirmPassword.message}
               </p>
             )}
@@ -168,7 +172,7 @@ const Register = () => {
           </button>
         </form>
 
-        <p className="mt-6 text-center text-sm text-slate-600">
+        <p className="mt-6 text-center text-sm text-slate-600 dark:text-slate-400">
           Already have an account?{' '}
           <Link className="font-medium text-blue-600 hover:text-blue-700" to="/login">
             Sign in

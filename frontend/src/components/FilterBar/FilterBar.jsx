@@ -6,7 +6,7 @@ import {
 } from '../../utils/constants.js';
 
 const selectClassName =
-  'w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100';
+  'w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-700 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:focus:ring-blue-950';
 
 const FilterBar = ({ filters, onChange, onClear, hasActiveFilters }) => (
   <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -76,7 +76,7 @@ const FilterBar = ({ filters, onChange, onClear, hasActiveFilters }) => (
         <button
           type="button"
           onClick={onClear}
-          className="shrink-0 rounded-md px-3 text-sm font-medium text-blue-600 hover:bg-blue-50"
+          className="shrink-0 rounded-md px-3 text-sm font-medium text-blue-600 hover:bg-blue-50 dark:text-blue-400 dark:hover:bg-blue-950/50"
         >
           Clear
         </button>

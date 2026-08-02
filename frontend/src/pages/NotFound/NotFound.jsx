@@ -1,13 +1,18 @@
 import { Link } from 'react-router-dom';
 
+import ThemeToggle from '../../components/ThemeToggle/ThemeToggle.jsx';
+
 const NotFound = () => (
-  <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
+  <main className="relative flex min-h-screen items-center justify-center bg-slate-50 px-4 dark:bg-slate-950">
+    <div className="absolute right-4 top-4">
+      <ThemeToggle />
+    </div>
     <section className="text-center">
       <p className="text-sm font-semibold text-blue-600">404</p>
-      <h1 className="mt-2 text-3xl font-semibold text-slate-900">
+      <h1 className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">
         Page not found
       </h1>
-      <p className="mt-3 text-slate-600">
+      <p className="mt-3 text-slate-600 dark:text-slate-400">
         The page you requested does not exist.
       </p>
       <Link

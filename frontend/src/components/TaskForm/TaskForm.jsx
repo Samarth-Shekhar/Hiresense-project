@@ -12,7 +12,7 @@ const defaultValues = {
 };
 
 const fieldClassName =
-  'mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100';
+  'mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:ring-blue-950';
 
 const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
   const {
@@ -23,12 +23,12 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
 
   return (
     <form
-      className="space-y-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm sm:p-6"
+      className="space-y-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-6"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
       <div>
-        <label className="text-sm font-medium text-slate-700" htmlFor="title">
+        <label className="text-sm font-medium text-slate-700 dark:text-slate-300" htmlFor="title">
           Title
         </label>
         <input
@@ -45,12 +45,12 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
           })}
         />
         {errors.title && (
-          <p className="mt-1 text-sm text-red-600">{errors.title.message}</p>
+          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.title.message}</p>
         )}
       </div>
 
       <div>
-        <label className="text-sm font-medium text-slate-700" htmlFor="description">
+        <label className="text-sm font-medium text-slate-700 dark:text-slate-300" htmlFor="description">
           Description <span className="font-normal text-slate-400">(optional)</span>
         </label>
         <textarea
@@ -66,7 +66,7 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
           })}
         />
         {errors.description && (
-          <p className="mt-1 text-sm text-red-600">
+          <p className="mt-1 text-sm text-red-600 dark:text-red-400">
             {errors.description.message}
           </p>
         )}
@@ -74,7 +74,7 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label className="text-sm font-medium text-slate-700" htmlFor="priority">
+          <label className="text-sm font-medium text-slate-700 dark:text-slate-300" htmlFor="priority">
             Priority
           </label>
           <select id="priority" className={fieldClassName} {...register('priority')}>
@@ -87,7 +87,7 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
         </div>
 
         <div>
-          <label className="text-sm font-medium text-slate-700" htmlFor="status">
+          <label className="text-sm font-medium text-slate-700 dark:text-slate-300" htmlFor="status">
             Status
           </label>
           <select id="status" className={fieldClassName} {...register('status')}>
@@ -101,7 +101,7 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
       </div>
 
       <div>
-        <label className="text-sm font-medium text-slate-700" htmlFor="dueDate">
+        <label className="text-sm font-medium text-slate-700 dark:text-slate-300" htmlFor="dueDate">
           Due date
         </label>
         <input
@@ -111,14 +111,14 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
           {...register('dueDate', { required: 'Due date is required' })}
         />
         {errors.dueDate && (
-          <p className="mt-1 text-sm text-red-600">{errors.dueDate.message}</p>
+          <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.dueDate.message}</p>
         )}
       </div>
 
-      <div className="flex flex-col-reverse gap-3 border-t border-slate-200 pt-5 sm:flex-row sm:justify-end">
+      <div className="flex flex-col-reverse gap-3 border-t border-slate-200 pt-5 dark:border-slate-800 sm:flex-row sm:justify-end">
         <Link
           to="/tasks"
-          className="rounded-md border border-slate-300 px-4 py-2.5 text-center text-sm font-medium text-slate-700 hover:bg-slate-50"
+          className="rounded-md border border-slate-300 px-4 py-2.5 text-center text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
         >
           Cancel
         </Link>
