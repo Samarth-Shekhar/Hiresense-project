@@ -10,7 +10,7 @@ const ThemeToggle = () => {
     <button
       type="button"
       onClick={toggleTheme}
-      className="rounded-md border border-slate-300 p-2.5 text-slate-600 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+      className="rounded-full border border-black/10 bg-white p-2.5 text-slate-600 hover:bg-[#e7e9e1] dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:bg-white/10"
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
       title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >

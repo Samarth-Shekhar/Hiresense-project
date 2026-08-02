@@ -12,10 +12,10 @@ import {
 } from '../../utils/helpers.js';
 
 const TaskTable = ({ tasks, busyTaskId, onComplete, onDelete }) => (
-  <div className="overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+  <div className="overflow-hidden rounded-[28px] bg-white shadow-sm ring-1 ring-black/5 dark:bg-white/5 dark:ring-white/10">
     <div className="overflow-x-auto">
       <table className="w-full text-left text-sm">
-        <thead className="border-b border-slate-200 bg-slate-50 text-xs uppercase tracking-wide text-slate-500 dark:border-slate-800 dark:bg-slate-950/60 dark:text-slate-400">
+        <thead className="border-b border-black/5 bg-[#e9ebe4] text-xs uppercase tracking-wide text-slate-500 dark:border-white/10 dark:bg-white/5 dark:text-slate-400">
           <tr>
             <th className="px-5 py-3 font-semibold">Task</th>
             <th className="px-5 py-3 font-semibold">Priority</th>
@@ -30,7 +30,7 @@ const TaskTable = ({ tasks, busyTaskId, onComplete, onDelete }) => (
             const overdue = isTaskOverdue(task);
 
             return (
-              <tr key={task._id} className="hover:bg-slate-50/70 dark:hover:bg-slate-800/50">
+              <tr key={task._id} className="hover:bg-[#f6f7f2] dark:hover:bg-white/5">
                 <td className="max-w-xs px-5 py-4">
                   <p className="font-medium text-slate-900 dark:text-white">{task.title}</p>
                   {task.description && (
@@ -73,7 +73,7 @@ const TaskTable = ({ tasks, busyTaskId, onComplete, onDelete }) => (
                         title="Mark complete"
                         disabled={isBusy}
                         onClick={() => onComplete(task._id)}
-                        className="rounded-md p-2 text-emerald-700 hover:bg-emerald-50 disabled:opacity-50 dark:text-emerald-400 dark:hover:bg-emerald-950/50"
+                        className="rounded-full bg-[#b9f227] p-2 text-[#14211d] hover:bg-[#a8df1d] disabled:opacity-50"
                       >
                         <FiCheck aria-hidden="true" />
                       </button>
@@ -81,7 +81,7 @@ const TaskTable = ({ tasks, busyTaskId, onComplete, onDelete }) => (
                     <Link
                       to={`/tasks/${task._id}/edit`}
                       title="Edit task"
-                      className="rounded-md p-2 text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
+                      className="rounded-full p-2 text-slate-600 hover:bg-[#edf0e7] dark:text-slate-300 dark:hover:bg-white/10"
                     >
                       <FiEdit2 aria-hidden="true" />
                     </Link>
@@ -90,7 +90,7 @@ const TaskTable = ({ tasks, busyTaskId, onComplete, onDelete }) => (
                       title="Delete task"
                       disabled={isBusy}
                       onClick={() => onDelete(task)}
-                      className="rounded-md p-2 text-red-600 hover:bg-red-50 disabled:opacity-50 dark:text-red-400 dark:hover:bg-red-950/50"
+                      className="rounded-full p-2 text-red-600 hover:bg-red-50 disabled:opacity-50 dark:text-red-400 dark:hover:bg-red-950/50"
                     >
                       <FiTrash2 aria-hidden="true" />
                     </button>

@@ -56,13 +56,15 @@ const EditTask = () => {
     : null;
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-[#f1f2ed] dark:bg-[#07110f]">
       <Navbar />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:flex md:gap-8">
         <Sidebar />
         <main className="min-w-0 flex-1 py-8">
-          <p className="text-sm font-medium text-blue-600">Tasks</p>
-          <h1 className="mt-1 text-2xl font-semibold text-slate-900 dark:text-white">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+            Tasks
+          </p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-[#14211d] dark:text-white">
             Edit task
           </h1>
           <p className="mt-2 text-slate-600 dark:text-slate-400">
@@ -88,7 +90,7 @@ const EditTask = () => {
           ) : (
             <Link
               to="/tasks"
-              className="mt-6 inline-block text-sm font-semibold text-blue-600"
+              className="mt-6 inline-block text-sm font-bold text-[#29463f] dark:text-[#b9f227]"
             >
               Return to tasks
             </Link>

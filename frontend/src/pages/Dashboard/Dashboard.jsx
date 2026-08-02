@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
-import { FiCheckCircle, FiClipboard, FiClock } from 'react-icons/fi';
+import {
+  FiArrowUpRight,
+  FiCheckCircle,
+  FiClipboard,
+  FiClock,
+  FiPlus,
+} from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 import Navbar from '../../components/Navbar/Navbar.jsx';
 import Sidebar from '../../components/Sidebar/Sidebar.jsx';
@@ -13,16 +20,16 @@ const initialStats = {
   pending: 0,
 };
 
-const StatCard = ({ icon: Icon, label, value, color }) => (
-  <article className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-    <div className="flex items-start justify-between">
-      <div>
-        <p className="text-sm font-medium text-slate-500 dark:text-slate-400">{label}</p>
-        <p className="mt-2 text-3xl font-semibold text-slate-900 dark:text-white">{value}</p>
-      </div>
-      <span className={`rounded-lg p-3 ${color}`}>
+const StatCard = ({ icon: Icon, label, value, className, iconClassName }) => (
+  <article className={`rounded-[28px] p-6 ${className}`}>
+    <div className="flex h-full min-h-36 flex-col justify-between">
+      <span className={`grid h-12 w-12 place-items-center rounded-2xl ${iconClassName}`}>
         <Icon className="h-5 w-5" aria-hidden="true" />
       </span>
+      <div>
+        <p className="text-4xl font-bold tracking-tight">{value}</p>
+        <p className="mt-1 text-sm font-medium opacity-70">{label}</p>
+      </div>
     </div>
   </article>
 );
@@ -56,36 +63,50 @@ const Dashboard = () => {
       label: 'Total tasks',
       value: stats.total,
       icon: FiClipboard,
-      color: 'bg-blue-50 text-blue-600',
+      className: 'bg-[#15332c] text-white sm:col-span-2',
+      iconClassName: 'bg-white/10 text-[#b9f227]',
     },
     {
       label: 'Completed',
       value: stats.completed,
       icon: FiCheckCircle,
-      color: 'bg-emerald-50 text-emerald-600',
+      className: 'bg-white text-[#14211d] shadow-sm dark:bg-white/10 dark:text-white',
+      iconClassName: 'bg-[#eef1e8] text-[#15332c] dark:bg-white/10 dark:text-[#b9f227]',
     },
     {
       label: 'Pending',
       value: stats.pending,
       icon: FiClock,
-      color: 'bg-amber-50 text-amber-600',
+      className: 'bg-[#b9f227] text-[#14211d]',
+      iconClassName: 'bg-[#14211d] text-[#b9f227]',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-[#f1f2ed] dark:bg-[#07110f]">
       <Navbar />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:flex md:gap-8">
         <Sidebar />
         <main className="min-w-0 flex-1 py-8">
-          <div>
-            <p className="text-sm font-medium text-blue-600">Overview</p>
-            <h1 className="mt-1 text-2xl font-semibold text-slate-900 dark:text-white">
-              Welcome back, {user.name}
-            </h1>
-            <p className="mt-2 text-slate-600 dark:text-slate-400">
-              Here is a summary of your current workload.
-            </p>
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                Overview
+              </p>
+              <h1 className="mt-2 text-3xl font-bold tracking-tight text-[#14211d] dark:text-white sm:text-4xl">
+                Welcome back, {user.name.split(' ')[0]}
+              </h1>
+              <p className="mt-2 text-slate-600 dark:text-slate-400">
+                A clear view of what needs your attention.
+              </p>
+            </div>
+            <Link
+              to="/tasks/new"
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-[#14211d] shadow-sm ring-1 ring-black/5 hover:bg-[#b9f227] dark:bg-white/10 dark:text-white dark:ring-white/10"
+              aria-label="Create task"
+            >
+              <FiPlus className="h-5 w-5" aria-hidden="true" />
+            </Link>
           </div>
 
           {error && (
@@ -105,7 +126,7 @@ const Dashboard = () => {
           )}
 
           <section
-            className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            className="mt-8 grid gap-4 sm:grid-cols-2"
             aria-busy={loading}
             aria-label="Task summary"
           >
@@ -117,6 +138,14 @@ const Dashboard = () => {
               />
             ))}
           </section>
+
+          <Link
+            to="/tasks"
+            className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#29463f] hover:underline dark:text-[#b9f227]"
+          >
+            View all tasks
+            <FiArrowUpRight aria-hidden="true" />
+          </Link>
         </main>
       </div>
     </div>

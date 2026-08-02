@@ -8,18 +8,21 @@ const links = [
 ];
 
 const Sidebar = () => (
-  <aside className="border-b border-slate-200 py-4 dark:border-slate-800 md:w-52 md:shrink-0 md:border-b-0 md:py-8">
-    <nav className="flex gap-2 overflow-x-auto md:flex-col" aria-label="Main navigation">
+  <aside className="py-4 md:w-52 md:shrink-0 md:py-8">
+    <nav
+      className="flex gap-2 overflow-x-auto rounded-full bg-white p-1.5 shadow-sm ring-1 ring-black/5 dark:bg-white/5 dark:ring-white/10 md:flex-col md:rounded-[26px] md:p-2"
+      aria-label="Main navigation"
+    >
       {links.map(({ to, label, icon: Icon }) => (
         <NavLink
           key={to}
           to={to}
           end={to === '/dashboard' || to === '/tasks'}
           className={({ isActive }) =>
-            `flex shrink-0 items-center gap-3 rounded-md px-3 py-2 text-sm font-medium ${
+            `flex shrink-0 items-center gap-3 rounded-full px-4 py-2.5 text-sm font-semibold ${
               isActive
-                ? 'bg-blue-50 text-blue-700 dark:bg-blue-950/60 dark:text-blue-300'
-                : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white'
+                ? 'bg-[#b9f227] text-[#14211d]'
+                : 'text-slate-500 hover:bg-[#edf0e7] hover:text-[#14211d] dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-white'
             }`
           }
         >

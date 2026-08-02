@@ -14,7 +14,7 @@ const SearchBar = ({ value, onChange }) => (
       type="search"
       value={value}
       onChange={(event) => onChange(event.target.value)}
-      className="w-full appearance-none rounded-md border border-slate-300 bg-white py-2.5 pl-10 pr-10 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:placeholder:text-slate-500 dark:focus:ring-blue-950"
+      className="w-full appearance-none rounded-full border border-black/5 bg-white py-3 pl-10 pr-10 text-sm text-slate-900 shadow-sm outline-none placeholder:text-slate-400 focus:border-[#9dcc20] focus:ring-2 focus:ring-[#b9f227]/30 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-slate-500"
       placeholder="Search title or description"
     />
     {value && (

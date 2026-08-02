@@ -12,7 +12,7 @@ const defaultValues = {
 };
 
 const fieldClassName =
-  'mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2.5 text-slate-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-950 dark:text-white dark:focus:ring-blue-950';
+  'mt-1 w-full rounded-2xl border border-black/10 bg-[#f6f7f2] px-4 py-3 text-slate-900 outline-none focus:border-[#9dcc20] focus:ring-2 focus:ring-[#b9f227]/30 dark:border-white/10 dark:bg-black/20 dark:text-white';
 
 const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
   const {
@@ -23,7 +23,7 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
 
   return (
     <form
-      className="space-y-5 rounded-lg border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-6"
+      className="space-y-5 rounded-[28px] bg-white p-5 shadow-sm ring-1 ring-black/5 dark:bg-white/5 dark:ring-white/10 sm:p-7"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
@@ -118,14 +118,14 @@ const TaskForm = ({ initialValues = defaultValues, onSubmit, submitLabel }) => {
       <div className="flex flex-col-reverse gap-3 border-t border-slate-200 pt-5 dark:border-slate-800 sm:flex-row sm:justify-end">
         <Link
           to="/tasks"
-          className="rounded-md border border-slate-300 px-4 py-2.5 text-center text-sm font-medium text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:bg-slate-800"
+          className="rounded-full border border-black/10 px-5 py-2.5 text-center text-sm font-bold text-slate-700 hover:bg-[#edf0e7] dark:border-white/10 dark:text-slate-200 dark:hover:bg-white/10"
         >
           Cancel
         </Link>
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-full bg-[#b9f227] px-5 py-2.5 text-sm font-bold text-[#14211d] hover:bg-[#a8df1d] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSubmitting ? 'Saving...' : submitLabel}
         </button>

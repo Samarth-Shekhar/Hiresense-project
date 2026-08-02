@@ -21,7 +21,6 @@ const initialQuery = {
   sort: 'newest',
   page: 1,
 };
-
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   const [query, setQuery] = useState(initialQuery);
@@ -62,7 +61,6 @@ const Tasks = () => {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     loadTasks();
   }, [query.search, query.priority, query.status, query.dueDate, query.sort, query.page]);
@@ -139,27 +137,29 @@ const Tasks = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <div className="min-h-screen bg-[#f1f2ed] dark:bg-[#07110f]">
       <Navbar />
       <div className="mx-auto max-w-7xl px-4 sm:px-6 md:flex md:gap-8">
         <Sidebar />
         <main className="min-w-0 flex-1 py-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-sm font-medium text-blue-600">Tasks</p>
-              <h1 className="mt-1 text-2xl font-semibold text-slate-900 dark:text-white">
-                Your tasks
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+                Workboard
+              </p>
+              <h1 className="mt-2 text-3xl font-bold tracking-tight text-[#14211d] dark:text-white sm:text-4xl">
+                Task list
               </h1>
               <p className="mt-2 text-slate-600 dark:text-slate-400">
-                Review your workload and keep each task up to date.
+                Keep every priority and deadline in one clear view.
               </p>
             </div>
             <Link
               to="/tasks/new"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700"
+              className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-bold text-[#14211d] shadow-sm ring-1 ring-black/5 hover:bg-[#b9f227] dark:bg-white/10 dark:text-white dark:ring-white/10"
             >
               <FiPlus aria-hidden="true" />
-              Create task
+              <span className="hidden sm:inline">Create task</span>
             </Link>
           </div>
 
@@ -185,7 +185,7 @@ const Tasks = () => {
           {loading ? (
             <p className="mt-8 text-sm text-slate-500 dark:text-slate-400">Loading tasks...</p>
           ) : tasks.length === 0 ? (
-            <section className="mt-8 rounded-lg border border-dashed border-slate-300 bg-white px-6 py-12 text-center dark:border-slate-700 dark:bg-slate-900">
+            <section className="mt-8 rounded-[28px] border border-dashed border-black/15 bg-white px-6 py-12 text-center dark:border-white/15 dark:bg-white/5">
               <h2 className="font-semibold text-slate-900 dark:text-white">
                 {hasActiveFilters ? 'No matching tasks' : 'No tasks yet'}
               </h2>
@@ -198,14 +198,14 @@ const Tasks = () => {
                 <button
                   type="button"
                   onClick={clearFilters}
-                  className="mt-5 text-sm font-semibold text-blue-600 hover:text-blue-700"
+                  className="mt-5 text-sm font-bold text-[#29463f] hover:underline dark:text-[#b9f227]"
                 >
                   Clear filters
                 </button>
               ) : (
                 <Link
                   to="/tasks/new"
-                  className="mt-5 inline-block text-sm font-semibold text-blue-600 hover:text-blue-700"
+                  className="mt-5 inline-block text-sm font-bold text-[#29463f] hover:underline dark:text-[#b9f227]"
                 >
                   Create a task
                 </Link>
