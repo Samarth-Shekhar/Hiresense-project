@@ -19,6 +19,20 @@ A small full-stack task manager built as a weekend assignment. Users can create 
 
 ## Screenshots
 
+### Dashboard
+
+![Taskboard dashboard](docs/screenshots/dashboard.png)
+
+### Task list
+
+![Task list with search, filters and task actions](docs/screenshots/task-list.png)
+
+### Create task
+
+![Create task form](docs/screenshots/create-task.png)
+
+### Authentication
+
 | Login | Registration |
 | --- | --- |
 | ![Taskboard login screen](docs/screenshots/login.png) | ![Taskboard registration screen](docs/screenshots/register.png) |
