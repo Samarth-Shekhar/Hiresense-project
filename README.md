@@ -4,6 +4,8 @@
 
 A small full-stack task manager built as a weekend assignment. Users can create an account, manage their own tasks, track dashboard totals, and search or filter their workload.
 
+**Live deployment:** [https://hiresense-project.vercel.app/login](https://hiresense-project.vercel.app/login)
+
 ## Features
 
 - JWT authentication using HTTP-only cookies
@@ -255,8 +257,8 @@ setup.
 Select **Deploy** in Vercel. After the deployment reaches the Ready state, open:
 
 ```text
-https://your-project.vercel.app
-https://your-project.vercel.app/api/health
+https://hiresense-project.vercel.app/login
+https://hiresense-project.vercel.app/api/health
 ```
 
 The health endpoint should return:
